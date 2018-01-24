@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/wmsiddiqui/SnsSlackPublisher/issues"
   },
-  "homepage": "https://github.com/wmsiddiqui/SnsSlackPublisher#readme"
+  "homepage": "https://github.com/wmsiddiqui/SnsSlackPublisher#readme",
+  "dependencies": {
+    "config": "^1.29.2"
+  }
 }
