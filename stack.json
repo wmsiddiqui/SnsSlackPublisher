@@ -1,0 +1,29 @@
+{
+	"Resources": {
+		"SlackPublisherApp": {
+			"Type": "AWS::Lambda::Function",
+			"Properties": {
+				"Timeout": 120,
+				"Code": {
+					"S3Bucket": "packages-wms",
+					"S3Key": "slack-publisher.zip"
+				},
+				"FunctionName": "SlackPublisher",
+				"Runtime": "nodejs6.10",
+				"Role": "arn:aws:iam::075919955183:role/lambda_exec_CsFunction",
+				"Handler": "index.handler"
+			}
+		},
+		"TriggerPermission": {
+			"Type": "AWS::Lambda::Permission",
+			"Properties": {
+				"Action": "lambda:InvokeFunction",
+				"Principal": "sns.amazonaws.com",
+				"SourceAccount": "075919955183",
+				"FunctionName": {
+					"Ref": "SlackPublisherApp"
+				}
+			}
+		}
+	}
+}

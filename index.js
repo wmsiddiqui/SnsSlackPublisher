@@ -14,5 +14,7 @@ exports.handler = function(event, context) {
 		promises.push(publishPromise);
 	});
 
-	Promise.all(promises).then(function() {});
+	Promise.all(promises).then(function() {
+		console.log('Completed Processing');
+	});
 };
