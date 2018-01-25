@@ -5,8 +5,8 @@
 			"Properties": {
 				"Timeout": 120,
 				"Code": {
-					"S3Bucket": "packages-wms",
-					"S3Key": "slack-publisher.zip"
+					"S3Bucket": "greet-lambda",
+					"S3Key": "snsSlack.zip"
 				},
 				"FunctionName": "SlackPublisher",
 				"Runtime": "nodejs6.10",
