@@ -12,7 +12,7 @@ exports.publishSlackMessage = function(message, webHook) {
 			if (res.statusCode === 200) {
 				console.log('Published message to channel ' + webHook);
 			} else {
-				console.log('Error posting to webhook ' + message.slackWebHook);
+				console.log(res.statusCode + ' - Error posting to webhook ' + webHook);
 			}
 			resolve();
 		});
@@ -24,7 +24,7 @@ exports.publishSlackMessage = function(message, webHook) {
 
 		var user = 'SNS Slack Publisher';
 
-		req.write(JSON.stringify({ text: JSON.stringify(message.Body, null, ' '), username: user }));
+		req.write(JSON.stringify({ text: JSON.stringify(message, null, ' '), username: user }));
 
 		req.end();
 	});
