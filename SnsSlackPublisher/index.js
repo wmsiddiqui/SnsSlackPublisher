@@ -8,6 +8,7 @@ exports.handler = function(event, context) {
 		var SnsPublishTime = record.Sns.Timestamp;
 		var SnsTopicArn = record.Sns.TopicArn;
 		var messageAttributes = record.Sns.MessageAttributes;
+		var message = record.Sns.Message;
 
 		var webHook = messageAttributes.SlackWebhook
 			? messageAttributes.SlackWebhook.Value
