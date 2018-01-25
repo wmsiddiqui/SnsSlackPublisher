@@ -9,7 +9,13 @@ exports.handler = function(event, context) {
 		var SnsTopicArn = event.record.Sns.TopicArn;
 		var messageAttributes = event.record.Sns.MessageAttributes;
 
-		var webHook = messageAttributes ? messageAttributes : config.getDefaultWebHook();
+		var webHook = messageAttributes.SlackWebhook
+			? messageAttributes.SlackWebhook.Value
+			: config.getDefaultWebHook();
+
+		console.log('webhook is : ');
+		console.log(webHook);
+
 		var publishPromise = publisher.publishSlackMessage(message, webHook);
 		promises.push(publishPromise);
 	});

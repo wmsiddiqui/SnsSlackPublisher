@@ -2,6 +2,8 @@ const https = require('https');
 const url = require('url');
 
 exports.publishSlackMessage = function(message, webHook) {
+	console.log('publishing to webhook');
+	console.log(webHook);
 	return new Promise(function(resolve, reject) {
 		const reqOpts = url.parse(webHook);
 		reqOpts.method = 'POST';
