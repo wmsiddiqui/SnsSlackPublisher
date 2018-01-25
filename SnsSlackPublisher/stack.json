@@ -10,6 +10,7 @@
 				},
 				"FunctionName": "SlackPublisher",
 				"Runtime": "nodejs6.10",
+				"Role": "arn:aws:iam::075919955183:role/lambda_exec_CsFunction",
 				"Handler": "index.handler"
 			}
 		},
