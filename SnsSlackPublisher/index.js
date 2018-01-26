@@ -6,7 +6,8 @@ exports.handler = function(event, context) {
 	event.Records.forEach((record) => {
 		var SnsMessageId = record.Sns.MessageId;
 		var SnsPublishTime = record.Sns.Timestamp;
-		var SnsTopicArn = record.Sns.TopicArn;
+		var snsTopicArn = record.Sns.TopicArn;
+		var snsTopic = snsTopicArn.split(':')[5];
 		var messageAttributes = record.Sns.MessageAttributes;
 		var message = record.Sns.Message;
 
@@ -17,7 +18,7 @@ exports.handler = function(event, context) {
 		console.log('webhook is : ');
 		console.log(webHook);
 
-		var publishPromise = publisher.publishSlackMessage(message, webHook);
+		var publishPromise = publisher.publishSlackMessage(message, webHook, snsTopic);
 		promises.push(publishPromise);
 	});
 

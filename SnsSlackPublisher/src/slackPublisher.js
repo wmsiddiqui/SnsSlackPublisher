@@ -1,7 +1,7 @@
 const https = require('https');
 const url = require('url');
 
-exports.publishSlackMessage = function(message, webHook) {
+exports.publishSlackMessage = function(message, webHook, snsTopic) {
 	console.log('Publishing to webhook: ' + webHook);
 	return new Promise(function(resolve, reject) {
 		const reqOpts = url.parse(webHook);
@@ -22,7 +22,7 @@ exports.publishSlackMessage = function(message, webHook) {
 			resolve();
 		});
 
-		var user = 'SNS Slack Publisher';
+		var user = 'SNS Slack Publisher - ' + snsTopic;
 
 		req.write(JSON.stringify({ text: JSON.stringify(message, null, ' '), username: user }));
 
