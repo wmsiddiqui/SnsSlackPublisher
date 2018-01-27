@@ -1,15 +1,8 @@
+	$stack = "./stack.json"
+	$deploy = "./deploy.json"
 
-if (Test-Path "../deploy") {
-	Remove-Item -path "../deploy" -recurse
-}
+aws cloudformation package --template-file $stack --s3-bucket "greet-lambda" --output-template-file $deploy --use-json
 
-New-Item -Path ../deploy -ItemType Directory -Force
-
-[Reflection.Assembly]::LoadWithPartialName( "System.IO.Compression.FileSystem" )
-[System.IO.Compression.ZipFile]::CreateFromDirectory("./", "../deploy/package.zip")
-
-aws s3 cp ../deploy/package.zip s3://greet-lambda/snsSlack.zip
-
-aws --region us-east-1 cloudformation deploy --template-file "./Stack.json" --stack-name SnsSlackStack
+aws --region us-east-1 cloudformation deploy --template-file $deploy --stack-name SnsSlackStack --capabilities CAPABILITY_IAM
 
 Read-Host -Prompt "Press Enter to exit"

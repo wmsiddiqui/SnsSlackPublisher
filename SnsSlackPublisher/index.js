@@ -15,9 +15,6 @@ exports.handler = function(event, context) {
 			? messageAttributes.SlackWebhook.Value
 			: config.getDefaultWebHook();
 
-		console.log('webhook is : ');
-		console.log(webHook);
-
 		var publishPromise = publisher.publishSlackMessage(message, webHook, snsTopic);
 		promises.push(publishPromise);
 	});
