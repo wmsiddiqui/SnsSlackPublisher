@@ -1,5 +1,7 @@
-	$stack = "./stack.json"
-	$deploy = "./deploy.json"
+$stack = "./stack.json"
+$deploy = "./deploy.json"
+
+npm install
 
 aws cloudformation package --template-file $stack --s3-bucket "greet-lambda" --output-template-file $deploy --use-json
 
