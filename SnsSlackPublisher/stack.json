@@ -14,7 +14,7 @@
 			"Properties": {
 				"Action": "lambda:InvokeFunction",
 				"Principal": "sns.amazonaws.com",
-				"SourceAccount": "075919955183",
+				"SourceAccount":  { "Ref" : "AWS::AccountId" },
 				"FunctionName": {
 					"Ref": "SlackPublisherApp"
 				}
