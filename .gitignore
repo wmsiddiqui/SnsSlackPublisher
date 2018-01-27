@@ -1,2 +1,5 @@
 /deploy/*
 /SnsSlackPublisher/deploy.json
+/node_modules/*
+/deploy.json
+/package-lock.json
