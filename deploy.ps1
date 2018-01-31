@@ -5,6 +5,9 @@ param (
 
 $stack = "./stack.json"
 $deploy = "./deploy.json"
+$config = "./config/default.json"
+
+(Get-Content $config).replace('<webhook>', $defaultWebhook) | Set-Content $config
 
 npm install
 
