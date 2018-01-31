@@ -7,13 +7,14 @@ A Lambda that publishes an incoming SNS event to a given slack webhook. Includes
 * NPM 5.6.0
 * [AWS CLI Installed](https://docs.aws.amazon.com/cli/latest/userguide/installing.html)
 * [AWS CLI configured to use your access key](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
+* An S3 bucket already created, for which you have write access through the CLI
 
 ## Instructions
 * [Setup a Slack webhook for your channel](https://savolabs.slack.com/apps/A0F7XDUAZ-incoming-webhooks), if one doesn't already exist.
 * Clone this repository.
-* Edit the "default.json" file under "config" to change the default webhook.
-* Change the "greet-lambda" in the deploy.ps1 file to a S3 bucket you have access to. 
 * Execute "deploy.ps1"
+* Enter the **name** of the S3 bucket you want to deploy to.
+* Enter the Slack webhook URL you wish to publish to
 * Once deployed successfully, subscribe the Lambda to an SNS topic using the AWS Management Console. 
 * Now any incoming SNS message on that topic will trigger this Lambda, and will post to your Slack Channel!
 
@@ -21,9 +22,3 @@ A Lambda that publishes an incoming SNS event to a given slack webhook. Includes
 Once you subscribe this Lambda to an SNS Topic, you can choose to re-route those SNS messages to a Slack channel other than the default.
 
 On the SNS Message itself, you will have to add a Message Attribute of type String, with the key of "SlackWebhook", and a value with the Slack Webhook's url. That message will be delivered to the url specified, not the default URL.
-
-
-## Coming Soon
-* Parameterization of the bucket name and default webhook
-* Check to ensure the bucket exists before trying to push to it
-* Possibly create the bucket if it doesn't exist
