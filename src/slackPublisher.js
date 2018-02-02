@@ -6,7 +6,7 @@ exports.publishSlackMessage = function(message, webHook, snsTopic) {
 	return new Promise(function(resolve, reject) {
 		const reqOpts = url.parse(webHook);
 		reqOpts.method = 'POST';
-		reqOpts.headers = { 'Content-Type': 'application/json' };
+		reqOpts.headers = { 'Content-Type': 'text/plain' };
 
 		var req = https.request(reqOpts, function(res) {
 			if (res.statusCode === 200) {
@@ -24,7 +24,7 @@ exports.publishSlackMessage = function(message, webHook, snsTopic) {
 
 		var user = 'SNS Slack Publisher - ' + snsTopic;
 
-		req.write(JSON.stringify({ text: JSON.stringify(message, null, ' '), username: user }));
+		req.write(JSON.stringify({ text: message, username: user }));
 
 		req.end();
 	});
