@@ -1,5 +1,5 @@
 # SnsSlackPublisher
-A Lambda that publishes an incoming SNS event to a given slack webhook. Includes a CloudFormation stack and a powershell script to easily deploy the application to your AWS account using the AWS CLI.
+A Lambda application written in Node.js that publishes incoming SNS messages to a Slack channel. Easily deployable using Powershell, AWS CLI, and Cloudformation. If you already have an AWS account setup, the applicatoion only takes a few keystrokes to deply if you're using Windows.
 
 ## Recommended Requirements 
 * Windows 10
