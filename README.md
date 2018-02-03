@@ -1,5 +1,5 @@
 # SnsSlackPublisher
-A Lambda application written in Node.js that publishes incoming SNS messages to a Slack channel. Easily deployable using Powershell, AWS CLI, and Cloudformation. If you already have an AWS account setup, the applicatoion only takes a few keystrokes to deply if you're using Windows.
+A Lambda application written in Node.js that publishes incoming SNS messages to a Slack channel. Easily deployable using Powershell, AWS CLI, and Cloudformation. If you already have an AWS account setup, the application only takes a few keystrokes to deploy.
 
 ## Recommended Requirements 
 * Windows 10
